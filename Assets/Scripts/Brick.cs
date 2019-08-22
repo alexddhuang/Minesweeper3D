@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class Brick : MonoBehaviour
-{
+{    
     private static Dictionary<string, Sprite> mTileImages;
 
     public bool mine = false;
@@ -20,7 +20,7 @@ public class Brick : MonoBehaviour
     public static void BuildSpritesMap()
     {
         if (mTileImages == null) {
-            Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath("Assets/Textures/MinesweeperSpritesheet.png");
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/MinesweeperSpritesheet");
             mTileImages = new Dictionary<string, Sprite>();
             for (int i = 0; i < sprites.Length; i++) {
                 mTileImages.Add(sprites[i].name, (Sprite) sprites[i]);
