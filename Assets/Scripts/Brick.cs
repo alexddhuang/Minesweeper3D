@@ -15,10 +15,12 @@ public class Brick : MonoBehaviour
 
     private List<Brick> mNeighbors;
 
+    private bool mShowed = false;
+
     public static void BuildSpritesMap()
     {
         if (mTileImages == null) {
-            Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath("Textures/MinesweeperSpritesheet.png");
+            Object[] sprites = AssetDatabase.LoadAllAssetRepresentationsAtPath("Assets/Textures/MinesweeperSpritesheet.png");
             mTileImages = new Dictionary<string, Sprite>();
             for (int i = 0; i < sprites.Length; i++) {
                 mTileImages.Add(sprites[i].name, (Sprite) sprites[i]);
@@ -58,6 +60,10 @@ public class Brick : MonoBehaviour
 
     public void ShowSecret()
     {
+        if (mShowed) return;
+
+        mShowed = true;
+
         string name;
 
         if (mine) {

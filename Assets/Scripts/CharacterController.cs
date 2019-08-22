@@ -27,5 +27,20 @@ public class CharacterController : MonoBehaviour
                 }
             }
         }
+
+        DetectMine();
+    }
+
+    private void DetectMine()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+        RaycastHit hit;
+        if (Physics.SphereCast(ray, 0.2f, out hit)) {
+            GameObject hitObject = hit.transform.gameObject;
+            Brick brick = hitObject.GetComponent<Brick>();
+            if (brick != null) {
+                brick.ShowSecret();
+            }
+        }
     }
 }
