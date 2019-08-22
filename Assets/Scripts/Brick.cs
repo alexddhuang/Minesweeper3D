@@ -13,7 +13,7 @@ public class Brick : MonoBehaviour
 
     public SpriteRenderer tile = null;
 
-    private List<Brick> mNeighbors;
+    public List<Brick> mNeighbors;
 
     private bool mShowed = false;
 
@@ -31,7 +31,6 @@ public class Brick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindNeighbors();
         BuildSpritesMap();
     }
 
@@ -39,6 +38,11 @@ public class Brick : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnValidate()
+    {
+        FindNeighbors();
     }
 
     private void FindNeighbors()
