@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1237892149245440756}
   - component: {fileID: 1531570422164791033}
   m_Layer: 0
-  m_Name: TileUnknown
+  m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,3 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 562061145d4604239b66832644526378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mine: 0
+  radius: 1.42
+  tile: {fileID: 1531570422164791033}
