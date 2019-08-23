@@ -5,7 +5,13 @@ using UnityEngine.AI;
 
 public class CharacterController : MonoBehaviour
 {
+    public int blood = 5;
+
     private NavMeshAgent mMeshAgent;
+
+    private Brick mPreviousBrick;
+
+    private Brick mCurrentBrick;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +46,16 @@ public class CharacterController : MonoBehaviour
             Brick brick = hitObject.GetComponent<Brick>();
             if (brick != null) {
                 brick.ShowSecret();
+
+                if (brick.mine && mPreviousBrick != null) {
+                    mMeshAgent.SetDestination(mPreviousBrick.transform.position);
+                    blood -= 1;
+                }
+
+                if (brick != mCurrentBrick) {
+                    mPreviousBrick = mCurrentBrick;
+                    mCurrentBrick = brick;
+                }
             }
         }
     }
